@@ -4,6 +4,15 @@
 
 pub struct TicketDescription(String);
 
+impl TryFrom<String> for TicketDescription {
+   type Error = &`static str;
+
+   fn try_from(value: String) -> Result<Self, Self::Error> {
+        value.
+    }
+
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

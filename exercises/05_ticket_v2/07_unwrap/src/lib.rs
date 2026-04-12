@@ -1,8 +1,24 @@
 // TODO: `easy_ticket` should panic when the title is invalid.
 //   When the description is invalid, instead, it should use a default description:
-//   "Description not provided".
+//   "description not provided".
 fn easy_ticket(title: String, description: String, status: Status) -> Ticket {
-    todo!()
+    let ticket = Ticket::new(title.clone(), description.clone(), status.clone());
+
+    match ticket {
+        Ok(ticket) => ticket,
+        Err(err) => {
+            if err == "Title cannot be empty" {
+                panic!("{}", err);
+            } else if err == "Title cannot be longer than 50 bytes" {
+                panic!("{}", err);
+            }
+            Ticket {
+                title: title,
+                description: "Description not provided".into(),
+                status: status,
+            }
+        }
+    }
 }
 
 #[derive(Debug, PartialEq, Clone)]
