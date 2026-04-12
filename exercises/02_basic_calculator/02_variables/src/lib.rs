@@ -8,6 +8,11 @@
 pub fn speed(start: u32, end: u32, time_elapsed: u32) -> u32 {
     // TODO: define a variable named `distance` with the right value to get tests to pass
     //  Do you need to annotate the type of `distance`? Why or why not?
+    assert!(
+        end >= start,
+        "End point must be greater than or equal to start point"
+    );
+    let distance = end - start;
 
     // Don't change the line below
     distance / time_elapsed
